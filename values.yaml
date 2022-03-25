@@ -1,9 +1,15 @@
-# Default values for mychart.
+# Default values for node-mongo-app-chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+# Mongodb variables 
+mongodb:
+  fullnameOverride: mongo
+  auth:
+    enabled: false
 
+# Application deployment variables
+replicaCount: 1
 image:
   repository: docker.io/tomwi/nodejs_app
   pullPolicy: Always
@@ -15,6 +21,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -22,7 +29,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: "liron-sensei"
 
 podAnnotations: {}
 
@@ -39,7 +46,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 3000
+  port: 80
 
 ingress:
   enabled: false
@@ -82,7 +89,3 @@ tolerations: []
 
 affinity: {}
 
-mongodb:
-  fullnameOverride: mongo
-  auth:
-    enabled: false

@@ -27,29 +27,29 @@ To install the chart with the release name `chart-example` do the following proc
 $ git clone https://github.com/tomwiz1/node-mongo-app.git
 ```
 
-2.Move to the chart directory and run the helm chart
+2.Move to the chart directory and run the helm chart while creating new namespace:
 
 ```bash
 $ cd node-mongo-app
-$ helm install chart-example node-mongo-app-chart/
+$ helm install --create-namespace -n node-app chart-example ./
 ```
 
 The output you get from the helm install should look like this :
 ```bash
-NAME: chart-example
-LAST DEPLOYED: Thu Mar 24 23:56:22 2022
-NAMESPACE: default
+NAME: example-chart
+LAST DEPLOYED: Fri Mar 25 18:26:50 2022
+NAMESPACE: node-app
 STATUS: deployed
 REVISION: 1
 NOTES:
 1. Get the application URL by running these commands:
-  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services chart-example-node-mongo-app-chart)
+  export NODE_PORT=$(kubectl get --namespace node-app -o jsonpath="{.spec.ports[0].nodePort}" services example-chart-node-mongo-app-chart)
   echo http://localhost:$NODE_PORT
 ```
 
 3. In order to get the specific NodePort the application is exposed on we need to run the output result:
 ```bash
-$ export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services chart-example-node-mongo-app-chart)
+$ export NODE_PORT=$(kubectl get --namespace node-app -o jsonpath="{.spec.ports[0].nodePort}" services example-chart-node-mongo-app-chart)
 $ echo http://localhost:$NODE_PORT
 ```
 
@@ -61,7 +61,7 @@ $ echo http://localhost:$NODE_PORT
 To uninstall/delete the `chart-example` chart:
 
 ```bash
-$ helm delete chart-example
+$ helm uninstall chart-example
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
