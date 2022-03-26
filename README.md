@@ -61,7 +61,7 @@ $ echo http://localhost:$NODE_PORT
 To uninstall/delete the `chart-example` chart:
 
 ```bash
-$ helm uninstall chart-example
+$ helm uninstall chart-example -n node-app
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
