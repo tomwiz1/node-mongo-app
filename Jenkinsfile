@@ -13,7 +13,6 @@ pipeline {
         name 'helm-pod'
         image 'alpine/helm:3.1.1'
         ttyEnabled true
-        command 'cat'
       }
     }
   }
