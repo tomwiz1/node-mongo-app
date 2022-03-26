@@ -70,17 +70,39 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ### Nodejs parameters
 
-| Name                     | Description                                                                                               | Value           |
-| ------------------------ | --------------------------------------------------------------------------------------------------------- | --------------- |
-| `replicaCount`           | String to partially override mongodb.fullname template (will maintain the release name)                   | `1`             |
-| `pullPolicy`             | String to fully override mongodb.fullname template                                                        | `Always`            |
-| `appPort`                | Default Kubernetes cluster domain                                                                         | `3000` |
-| `extraDeploy`            | Array of extra objects to deploy with the release                                                         | `[]`            |
-| `commonLabels`           | Add labels to all the deployed resources (sub-charts are not considered). Evaluated as a template         | `{}`            |
-| `commonAnnotations`      | Common annotations to add to all Mongo resources (sub-charts are not considered). Evaluated as a template | `{}`            |
-| `diagnosticMode.enabled` | Enable diagnostic mode (all probes will be disabled and the command will be overridden)                   | `false`         |
-| `diagnosticMode.command` | Command to override all containers in the deployment                                                      | `["sleep"]`     |
-| `diagnosticMode.args`    | Args to override all containers in the deployment                                                         | `["infinity"]`  |
+| Name                                         | Description                                                                                               | Value                    |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `replicaCount`                               | Number of pods to be deployed                                                                             | `1`                      |
+| `image.repository`                           | The source registry for the Docker image                                                                  | `tomwi/nodejs_app        |
+| `image.pullPolicy`                           | The Kubernetes pull policy                                                                                | `Always`                 |
+| `image.tag`                                  | The Kubernetes pull policy                                                                                | `1.0`                    |
+| `appPort`                                    | node-app Port                                                                                             | `3000`                   |
+| `imagePullSecrets`                           | Specify docker-registry secret names as an array                                                          | `[]`                     |
+| `nameOverride`                               | String to partially override node-mongo-app-chart.fullname template (will maintain the release name)      | `""`                     |
+| `fullnameOverride`                           | String to fully override mongodb.fullname template                                                    	   | `""`                     |
+| `serviceAccount.create`                      | Enable creation of ServiceAccount for Charts pods                                                         | `false`                  |
+| `serviceAccount.annotations`                 | Additional Service Account annotations                                                                    | `{}`                     |
+| `serviceAccount.name`                        | Name of the created serviceAccount                                                                        | `""`                     |
+| `podAnnotations`                             | Chart Pod annotations                                                                                     | `{}`                     |
+| `podSecurityContext`                         | Enable Chart pod(s)' Security Context                                                                     | `{}`                     |
+| `securityContext`                            |                                                                                                           | `{}`                     |
+| `service.type`                               | Kubernetes Service type                                                                                   | `NodePort`               |
+| `service.port`                               | Node app service port   	                                                                               | `80`                     |
+| `ingress.enabled`                            | Enable Ingress                                                                                            | `false`                  |
+| `ingress.className`                          |                                       												                       | `""`                     |
+| `ingress.annotations`                        |                                                   													       | `{}`                     |
+| `ingress.hosts.host`                         |            																					           | `chart.example.local`    |          
+| `ingress.hosts.paths.path`                   |                                                     													   | `/`                      |
+| `ingress.hosts.paths.pathType`               |                                                        												   | `ImplementationSpecific` |
+| `ingress.tls`                                |                                                                                                           | `[]`                     |
+| `resources`                                  | CPU/memory resource requests/limits                                                                       | `{}`                     |
+| `autoscaling.enabled`                        | Enable autoscaling                                                                                        | `false`                  |
+| `autoscaling.minReplicas`                    | Minimum pod replicas                                                                                      | `1`                      |
+| `autoscaling.maxReplicas`                    | Maximum pod replicas                                                                                      | `100`                    |
+| `autoscaling.targetCPUUtilizationPercentage` | target CPU threshold to autoscale pod                                                                     | `80`                     |
+| `nodeSelector`                               | Node labels for pod assignment                                                                            | `{}`                     |
+| `tolerations`                                | Node tolerations for pod assignment                                                                       | `[]`                     |
+| `affinity`                                   | Node affinity for pod assignment                                                                          | `{}`                     |
 
 
 ### MongoDB(&reg;) parameters
