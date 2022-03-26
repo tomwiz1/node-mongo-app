@@ -85,16 +85,16 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.name`                        | Name of the created serviceAccount                                                                        | `""`                     |
 | `podAnnotations`                             | Chart Pod annotations                                                                                     | `{}`                     |
 | `podSecurityContext`                         | Enable Chart pod(s)' Security Context                                                                     | `{}`                     |
-| `securityContext`                            |                                                                                                           | `{}`                     |
+| `securityContext`                            | Define a securityContext                                                                                  | `{}`                     |
 | `service.type`                               | Kubernetes Service type                                                                                   | `NodePort`               |
 | `service.port`                               | Node app service port   	                                                                               | `80`                     |
-| `ingress.enabled`                            | Enable Ingress                                                                                            | `false`                  |
-| `ingress.className`                          |                                       												                       | `""`                     |
-| `ingress.annotations`                        |                                                   													       | `{}`                     |
-| `ingress.hosts.host`                         |            																					           | `chart.example.local`    |          
-| `ingress.hosts.paths.path`                   |                                                     													   | `/`                      |
-| `ingress.hosts.paths.pathType`               |                                                        												   | `ImplementationSpecific` |
-| `ingress.tls`                                |                                                                                                           | `[]`                     |
+| `ingress.enabled`                            | Enable ingress                                                                                            | `false`                  |
+| `ingress.className`                          | Name of the ingress                                      					                               | `""`                     |
+| `ingress.annotations`                        | Ingress annotations                                           										       | `{}`                     |
+| `ingress.hosts.host`                         | Host name           														     				           | `chart.example.local`    |          
+| `ingress.hosts.paths.path`                   | Host path                                                    						     				   | `/`                      |
+| `ingress.hosts.paths.pathType`               | Host path type                                                        								       | `ImplementationSpecific` |
+| `ingress.tls`                                | Secure ingress (443)                                                                                          | `[]`                     |
 | `resources`                                  | CPU/memory resource requests/limits                                                                       | `{}`                     |
 | `autoscaling.enabled`                        | Enable autoscaling                                                                                        | `false`                  |
 | `autoscaling.minReplicas`                    | Minimum pod replicas                                                                                      | `1`                      |
